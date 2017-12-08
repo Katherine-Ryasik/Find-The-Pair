@@ -1,0 +1,545 @@
+/* подключаем шрифт */
+@font-face {
+   font-family: "DancingScript";
+   src: url(fonts/DancingScript-Bold.ttf);
+   src: url(fonts/DancingScript-Regular.ttf);
+   font-weight: bold;
+} 
+
+/* обнуляем марджины и падинги для всех элементов DOM */
+ * {
+    margin: 0;
+    padding: 0;
+}
+ /* задаем свойства body */
+body {
+  	height: 100%;
+  	color: #6e3131;
+  	text-align: center;
+  	font-family: "DancingScript";
+}
+/*свойства дива-обертки*/
+.body__wrap {
+    width: 1020px;
+    margin:0 auto;
+    padding-top: 20px;
+    background-color: rgba(45, 42, 42, 0.78);
+    box-shadow: 0px 10px 29px 18px #ca323261;
+    padding-bottom: 50px;
+}
+
+/*размер логотипа*/
+.img_size{
+	width: 30%;
+}
+/*свойства главного заголовка*/
+.logo__main--caption{
+	 color: #2b1b1b;
+   text-shadow: 1px 1px 2px #e02b2b, 0 0 1em #ffffff;
+   font-size: 5em;
+   text-transform: uppercase;
+   margin-top: 5px;
+   margin-bottom: 100px;
+}
+
+/*при наведение меняется цвет главного заголовка*/
+.logo__main--caption:hover{
+	color: #f70505;
+}
+/* свойства второго заголовка */
+.wrap__second--caption{
+	color: #5d0e0e;
+	font-size: 2.5em;
+	margin-bottom: 25px;
+}
+.wrapper_for--levels {
+    margin: 0 auto;
+    width: 900px;
+}
+.level-the-play{
+	float:left;
+}
+.level-the-play, .level_points, .level_points--s, .level_points--t {
+	float:left;
+  margin: 0  22px;
+}
+.level_points--style, .level_points--style--s, .level_points--style--t {
+    color: #5d0e0e;
+    font-size: 2.5em;
+    margin-bottom: 25px;
+}
+.level_input_points, .level_input_points--s, .level_input_points--t {
+    background-color: #8a4747;
+    color: #353232;
+    width: 120px;
+    height: 30px;
+    font-size: 22px;
+    border: 3px solid #463333;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+/*свойства параграфа*/
+.fix_timer_clock{
+    text-align: left;
+    margin-top: 220px;
+    display: inline-block;
+}
+/*свойства для таймера (секунды, миллисекунды)*/
+.fix_timer_counter{
+	color:#6e3131;
+	font-size: 35px;
+}
+
+/*делаем нижний отступ от логотипа*/
+.logo{
+	margin-bottom: 65px;
+}
+#win--text {
+    display: none;
+    position: absolute;
+    width: 700px;
+    height: 323px;
+    background-color: #ff0000d1;
+    color: #481a1a;
+    margin-left: 153px;
+    border: 2px solid #8e1a1a;
+    border-radius: 20px;
+    margin-top: 20%;
+    z-index: 1;
+    font-size: 20px;
+}
+#win--the--text {
+    height: 10em;
+    line-height: 10em;
+}
+ /*создаем анимацию для логотипа */
+.img_animation:hover{
+	animation-name: rotation; 
+	animation-duration: 2s; 
+	animation-iteration-count: 30s; 
+	animation-timing-function: linear; 
+} 
+
+@keyframes rotation {
+	0% {transform:rotate(0deg);} 
+	100% {transform:rotate(360deg);} 
+} 
+.img_animation { transition: all .2s ease-in-out; 
+}
+/*задаем свойства контейнеру , в котором будут находиться карты*/
+.cards--case_property{
+	 display: inline-block;
+	 width: 880px;
+	 background-color: rgba(8, 8, 8, 0.45);
+   border: 2px solid #a21f1f;
+   border-radius: 22px;
+   box-shadow: 0px 8px 38px 10px #420909;
+   margin-top: 30px;
+   margin-bottom: 30px;
+   padding: 20px 30px;
+}
+.points{
+	font-size: 50px;
+}
+/*фиксированный блок с таймером закрепляем слева от контейнера, для удобства контроля времени во время игры*/
+.block_fix_all_animation{
+	position:fixed;
+	left: 5px;
+  top: 23%;
+}
+/*задаем свойства кнопке меняющей стили страницы*/
+.button {
+    position: relative;
+    display: inline-block;
+    font-size: 100%;
+    font-weight: 700;
+    color: rgb(213, 213, 222);
+    text-decoration: none;
+    text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+    padding: 0.8em 1.2em;
+    outline: none;
+    border-radius: 9px;
+    background: linear-gradient(rgb(14, 15, 19), rgb(107, 14, 14)) rgb(160, 173, 224);
+    box-shadow: 0 1px rgba(255,255,255,.2) inset, 0 3px 5px rgba(80, 83, 101, 0.5), 0 0 1px 1px rgba(0,1,6,.2);
+    transition: .2s ease-in-out;
+}
+/* свойства при наведение курсора на кнопку */
+.button:hover:not(:active) {
+    background: linear-gradient(rgb(255, 85, 85), rgb(169, 13, 13)) rgb(126,126,134);
+    cursor: pointer;
+}
+/*указываем стили кнопки при нажатие (active)*/
+.button:active {
+  top: 1px;
+  background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+  box-shadow:
+   0 0 1px rgba(0,0,0,.5) inset,
+   0 2px 3px rgba(0,0,0,.5) inset,
+   0 1px 1px rgba(255,255,255,.1);
+}
+.show_results_btn {
+    padding: 0.8em 2.2em;
+}
+/*дополнительные стили страницы, которые применяются при клике на кнопку(стили прописаны для  боди, дива-обертки, заголовков, контейнера для карт)*/
+.new--body{
+     background: linear-gradient(to right, rgb(31, 28, 25) 0%, rgba(190,123,60,1) 35%, rgba(167,108,53,1) 53%, rgba(229,172,118,1) 83%, rgb(70, 58, 40) 100%);
+}
+.logo__new--style--main--caption {
+    color:#696337;
+	  text-shadow: 1px 1px 2px black, 0 0 1em #ffffff;
+}
+.logo__new--style--main--caption:hover{
+    color: #6b1313;
+}
+.wrap__new--style--second-caption {
+    color:#5d0e0e;
+}
+.cards--new--style_property {
+    background-color: rgba(162, 105, 31, 0.45);
+    border: 2px solid #886643;
+    box-shadow: 0px 8px 38px 10px #423808;
+}
+.new--style_body__wrap {
+    background-color: rgba(218, 166, 112, 0.55);
+    box-shadow: 0px 10px 29px 18px #54340461;
+}
+
+.new--style__timer{
+	color: #af8320;
+}
+
+.newConteiner{
+	display: inline-block;
+}
+/*задаем свойства блоку с картами*/
+.new--div{
+	width: 162px;
+  height: 340px;
+	margin: 0 5px;
+	cursor: pointer;
+}
+/*свойства класса, при условии совпадения*/
+.true{
+	position: relative;
+	width: 162px;
+  height: 340px;
+	float: left;
+	background-color: transparent;
+	margin: 10px 7px;
+	transition: 1.3s;
+	transform-style: preserve-3d;
+	transform: rotateY(0deg);
+}
+/*свойства класса, при закрытых картах*/
+
+.close, .close_first{
+	width: 162px;
+  height: 340px;
+  background-image: url(img/card.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-radius: 35px;
+  float: left;
+  margin: 10px 7px;
+  transition: 0.8s;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  cursor: pointer;
+
+}
+.close_first>img{
+  border-radius: 16px;
+  margin-top: 35px;
+}
+/*свойства класса, при условии открытых карт*/
+.open{
+	background-color: white;
+  float: left;
+	margin-top: 50px;
+	width: 162px;
+  height: 340px;
+	margin: 10px 7px;
+	border-radius: 35px;
+	transition: 0.8s;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+}
+.open>img{
+	border-radius: 15px;
+	margin-top: 50px;
+  visibility: visible;
+  overflow: hidden;
+	float: left;
+}
+
+.close>img{
+	background-size: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  width: 150px;
+  height: 340px;
+  float: left;
+}
+.true>img{
+  visibility: hidden;
+  float: left;
+  margin: 10px 7px;
+  
+}
+/*свойства селекта, отвечающего за выбор размера доски*/
+#choice{
+	width: 130px;
+  height: 35px;
+  background-color: #8a4747;
+  border: 3px solid #503939;
+  -moz-appearance: none;
+}
+select#choice {
+  color: #353232;
+  font-size:22px;
+  padding-left: 33px;
+  border-radius: 8px;
+}
+/*убераем синюю обводку при кликах*/
+input, select,button {
+	outline:none;
+}
+/*свойства кнопки, отвечающей за остановку таймера*/
+.btn_play{
+	width: 40px;
+	height: 30px;
+	border: none;
+	background: transparent;
+  margin-left: 40px;
+
+}
+.btn_img{
+	width: 100%;
+	border-radius: 25px;
+}
+
+/*создаем анимацию "таймер", делаем ее фиксированной для удобства  контроля времени в процессе игры*/
+
+.square {
+  position: absolute;
+  text-align: left;
+  width: 1vmax;
+  margin: 8vmax;
+  box-sizing: border-box;
+  -webkit-animation: colorspin 8s ease infinite;
+          animation: colorspin 8s ease infinite;
+}
+.square div {
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+}
+.square div:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 10%;
+  -webkit-animation: borderspin 2s linear infinite;
+          animation: borderspin 2s linear infinite;
+}
+.square div:nth-of-type(1) {
+  display: block;
+  width: 1.3962vmax;
+  height: 1.3962vmax;
+  -webkit-transform: translate(-50%, -50%) rotate(6deg);
+          transform: translate(-50%, -50%) rotate(6deg);
+}
+.square div:nth-of-type(1):before {
+  background: #ff00003b ;
+  border: 1px solid #ff00003b;
+  -webkit-animation-delay: -0.05s;
+          animation-delay: -0.05s;
+}
+
+.square div:nth-of-type(2) {
+  display: block;
+  width: 2.31022vmax;
+  height: 2.31022vmax;
+  -webkit-transform: translate(-50%, -50%) rotate(18deg);
+          transform: translate(-50%, -50%) rotate(18deg);
+}
+.square div:nth-of-type(2):before {
+  background: #7b03033b;
+  border: 1px solid #7b03033b;
+  -webkit-animation-delay: -0.15s;
+          animation-delay: -0.15s;
+}
+
+.square div:nth-of-type(3) {
+  display: block;
+  width: 3.41428vmax;
+  height: 3.41428vmax;
+  -webkit-transform: translate(-50%, -50%) rotate(30deg);
+          transform: translate(-50%, -50%) rotate(30deg);
+}
+.square div:nth-of-type(3):before {
+  background #e03e3e3b: 
+  border: 1px solid #e03e3e3b;
+  -webkit-animation-delay: -0.25s;
+          animation-delay: -0.25s;
+}
+
+.square div:nth-of-type(4) {
+  display: block;
+  width: 4.74788vmax;
+  height: 4.74788vmax;
+  -webkit-transform: translate(-50%, -50%) rotate(42deg);
+          transform: translate(-50%, -50%) rotate(42deg);
+}
+.square div:nth-of-type(4):before {
+  background: #1311113b;
+  border: 1px solid #1311113b;
+  -webkit-animation-delay: -0.35s;
+          animation-delay: -0.35s;
+}
+
+.square div:nth-of-type(5) {
+  display: block;
+  width: 5.35876vmax;
+  height: 5.35876vmax;
+  -webkit-transform: translate(-50%, -50%) rotate(54deg);
+          transform: translate(-50%, -50%) rotate(54deg);
+}
+.square div:nth-of-type(5):before {
+  background: #c747473b;
+  border: 1px solid #c747473b;
+  -webkit-animation-delay: -0.45s;
+          animation-delay: -0.45s;
+}
+
+.square div:nth-of-type(6) {
+  display: block;
+  width: 6.30456vmax;
+  height: 6.30456vmax;
+  -webkit-transform: translate(-50%, -50%) rotate(66deg);
+          transform: translate(-50%, -50%) rotate(66deg);
+}
+.square div:nth-of-type(6):before {
+  background: #cc6f6f3b;
+  border: 1px solid #cc6f6f3b;
+  -webkit-animation-delay: -0.55s;
+          animation-delay: -0.55s;
+}
+
+.square div:nth-of-type(7) {
+  display: block;
+  width: 8.65491vmax;
+  height: 8.65491vmax;
+  -webkit-transform: translate(-50%, -50%) rotate(78deg);
+          transform: translate(-50%, -50%) rotate(78deg);
+}
+.square div:nth-of-type(7):before {
+  background: #5854543b;
+  border: 1px solid #5854543b;
+  -webkit-animation-delay: -0.65s;
+          animation-delay: -0.65s;
+}
+
+.square div:nth-of-type(8) {
+  display: block;
+  width: 10.49392vmax;
+  height: 10.49392vmax;
+  -webkit-transform: translate(-50%, -50%) rotate(90deg);
+          transform: translate(-50%, -50%) rotate(90deg);
+}
+.square div:nth-of-type(8):before {
+  background: #a914143b;
+  border: 1px solid #a914143b;
+  -webkit-animation-delay: -0.75s;
+          animation-delay: -0.75s;
+}
+
+.square div:nth-of-type(9) {
+  display: block;
+  width: 12.9232vmax;
+  height: 12.9232vmax;
+  -webkit-transform: translate(-50%, -50%) rotate(102deg);
+          transform: translate(-50%, -50%) rotate(102deg);
+}
+.square div:nth-of-type(9):before {
+  background: #f545453b;
+  border: 1px solid #f545453b;
+  -webkit-animation-delay: -0.85s;
+          animation-delay: -0.85s;
+}
+
+.square div:nth-of-type(10) {
+  display: block;
+  width: 14.06546vmax;
+  height: 14.06546vmax;
+  -webkit-transform: translate(-50%, -50%) rotate(114deg);
+          transform: translate(-50%, -50%) rotate(114deg);
+}
+.square div:nth-of-type(10):before {
+  background: #7d0a0a3b;
+  border: 1px solid #7d0a0a3b;
+  -webkit-animation-delay: -0.95s;
+          animation-delay: -0.95s;
+}
+
+
+@-webkit-keyframes colorspin {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  50% {
+    -webkit-filter: hue-rotate(180deg);
+            filter: hue-rotate(180deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+
+@keyframes colorspin {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  50% {
+    -webkit-filter: hue-rotate(180deg);
+            filter: hue-rotate(180deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+@-webkit-keyframes borderspin {
+  0%,100% {
+    -webkit-transform: rotate(-6deg);
+            transform: rotate(-6deg);
+  }
+  50% {
+    -webkit-transform: rotate(6deg);
+            transform: rotate(6deg);
+    border-radius: 40%;
+  }
+}
+@keyframes borderspin {
+  0%,100% {
+    -webkit-transform: rotate(-6deg);
+            transform: rotate(-6deg);
+  }
+  50% {
+    -webkit-transform: rotate(6deg);
+            transform: rotate(6deg);
+    border-radius: 40%;
+  }
+}

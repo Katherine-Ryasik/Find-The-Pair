@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Find the Pairs</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+	<div class="wrap body__wrap"> <!-- главная обертка -->
+		<header>
+				<div class=" logo">
+					<img class="logo__img img_animation img_size" src="img/logo.png" alt="logo">
+					<h1 class="caption logo__main--caption">Win an Iphone 8+</h1>
+				</div>
+				<div  id="win--text"><h2 id="win--the--text"></h2></div>
+				<div class="wrapper_for--levels">
+					<div class="wrapper__levels level-the-play">
+						<h2 class="second--caption wrap__second--caption">Сhoice of size</h2>
+						<select id="choice"> <!-- выбор размера доски -->
+							<option value="10">5 x 5</option>
+							<option value="16">8 x 8</option>
+							<option value="20">10 x 10</option>
+							<option value="24">12 x 12</option>
+						</select>
+					</div>
+					<div class="wrapper__points level_points">
+						<h2  class="level_points--style">Your level</h2>
+						<div id="level" class="level_input_points"></div>
+					</div>
+					<div class="wrapper__points level_points--s">
+						<h2  class="level_points--style--s">Last points</h2>
+						<div  id="level_points" class="level_input_points--s"></div>
+					</div>
+					<div class="wrapper__points level_points--t">
+						<h2  class="level_points--style--t">Total points</h2>
+						<div  id="total_points" class="level_input_points--t"></div>
+					</div>
+					</div>
+		</header>
+		<aside>
+				<div class="fix block_fix_all_animation">  <!-- фиксированный блок с таймером и анимацией -->
+						<div class="square">
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+						<button class="fix btn_play" onclick="pauseTimerGame()"><img class="fix btn_img" src="img/play.gif" alt="play"></button><!-- кнопка, чтобы ставить игру на паузу -->
+
+						<p class="fix fix_timer_clock"><span id="seconds" class="seconds fix_timer_counter">00</span><span class="seconds points">:</span><span id="tens" class="seconds fix_timer_counter">00</span></p>  <!-- таймер  -->
+						
+	 		 	</div>
+	 	</aside>	
+	 	<main>
+	 		 <p id ="text" class ="wrap__text--after--game"></p> <!-- текстовое поле, в котрое будет выводиться текст после завершения игры -->
+			<div id ="cards" class="cards wrap__cards--case cards--case_property"> <!-- контейнер,в котором хранятся все карты -->
+			</div>
+		</main>
+		<footer>
+			<button class="button change_style_body" onclick="changeClassButton()">Change style</button> <!-- кнопка для изменения стиля страницы --> 
+		</footer>
+	</div>
+	<script src="js/index.js"></script>
+</body>
+</html>
